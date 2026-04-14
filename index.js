@@ -189,6 +189,9 @@
     startAutorotate();
     updateSceneName(scene);
     updateSceneList(scene);
+    if (scene && scene.data && scene.data.id) {
+      window.location.hash = scene.data.id;
+    }
   }
 
   function updateSceneName(scene) {
@@ -389,14 +392,14 @@
   // Display the initial scene.
   var initialScene = scenes[0];
 
-if (window.location.hash) {
-  var hash = window.location.hash.substring(1);
-  var scene = findSceneById(hash);
-  if (scene) {
-    initialScene = scene;
+  if (window.location.hash) {
+    var hash = window.location.hash.substring(1);
+    var sceneFromHash = findSceneById(hash);
+    if (sceneFromHash) {
+      initialScene = sceneFromHash;
+    }
   }
-}
 
-switchScene(initialScene);
+  switchScene(initialScene);
 
 })();
