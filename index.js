@@ -387,6 +387,16 @@
   }
 
   // Display the initial scene.
-  switchScene(scenes[0]);
+  var initialScene = scenes[0];
+
+if (window.location.hash) {
+  var hash = window.location.hash.substring(1);
+  var scene = findSceneById(hash);
+  if (scene) {
+    initialScene = scene;
+  }
+}
+
+switchScene(initialScene);
 
 })();
